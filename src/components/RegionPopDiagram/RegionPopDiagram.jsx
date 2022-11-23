@@ -1,8 +1,14 @@
 import React from 'react';
 
+const Region = ({region}) => {
+    return <div>
+        <h1>{region.region}</h1>
+    </div>
+}
+
 const RegionPopDiagram = ({regions}) => {
     return <div>
-        {console.log(regions)}
+        {regions.map(regionInfo => <Region key={regionInfo.region[1]} region={regionInfo}/>)}
     </div>
 }
 

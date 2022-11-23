@@ -9,7 +9,8 @@ const RegionPopDiagramContainer = ({loading, regions, getRegion}) => {
         regions.forEach(region => getRegion(region))
     }, [])
 
-    if (loading) return <h1>Loading...</h1>
+    if (loading || regions.length !== 5) return <h1>Loading...</h1>
+    //TODO ^ исправить!
     return <RegionPopDiagram regions={regions}/>
 };
 
