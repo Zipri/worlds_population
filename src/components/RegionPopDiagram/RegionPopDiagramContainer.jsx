@@ -5,7 +5,8 @@ import {getRegion} from "../../redux/regions-reducer";
 
 const RegionPopDiagramContainer = ({loading, regions, getRegion}) => {
     useEffect(() => {
-        getRegion('europe')
+        const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
+        regions.forEach(region => getRegion(region))
     }, [])
 
     if (loading) return <h1>Loading...</h1>

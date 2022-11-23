@@ -8,9 +8,6 @@ let config = {
 const instance = axios.create(config);
 
 export const worldsPopApi = {
-    getAll () {
-        return instance.get('all').then(response => response.data)
-    },
     getRegion (regionName) {
         return instance.get(`region/${regionName}`).then(response => response.data)
     },
