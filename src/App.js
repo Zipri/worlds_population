@@ -1,25 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import {worldsPopApi} from "./api/api";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+    const getAll = async () => {
+        const data = await worldsPopApi.getAll()
+    }
+    const getRegion = async (regionName) => {
+        const data = await worldsPopApi.getRegion(regionName)
+        // сортируем и возвращаем первые 10 элементов (регионы с наибольшим населением)
+        return data.sort((a,b) => b.population - a.population).slice(0, 10)
+    }
+
+
+
+    return <div className="App">
+        <button onClick={() => getRegion('europe').then(resp => console.log(resp))}>click</button>
     </div>
-  );
 }
 
 export default App;
