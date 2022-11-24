@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from './RegionPopDiagram.module.css'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
+import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js';
+import {Doughnut} from 'react-chartjs-2';
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Region = ({region}) => {
@@ -14,45 +15,76 @@ const Region = ({region}) => {
                 label: '# population',
                 data: population,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
+                    'rgb(200,108,102)',
+                    'rgb(184,83,74)',
+                    'rgb(160,62,54)',
+                    'rgb(139,52,46)',
+                    'rgb(125,45,39)',
 
-                    'rgba(112, 224, 12, 0.2)',
-                    'rgba(0, 21, 255, 0.2)',
-                    'rgba(168, 140 ,0, 0.2)',
-                    'rgba(220, 0, 255, 0.2)',
+                    'rgb(116,50,45)',
+                    'rgb(106,53,49)',
+                    'rgb(89,44,42)',
+                    'rgb(68,34,31)',
+                    'rgb(51,24,23)',
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
+                    'rgb(200,108,102)',
+                    'rgb(184,83,74)',
+                    'rgb(160,62,54)',
+                    'rgb(139,52,46)',
+                    'rgb(125,45,39)',
 
-                    'rgba(112, 224, 12, 1)',
-                    'rgba(0, 21, 255, 1)',
-                    'rgba(168, 140 ,0, 1)',
-                    'rgba(220, 0, 255, 1)',
+                    'rgb(116,50,45)',
+                    'rgb(106,53,49)',
+                    'rgb(89,44,42)',
+                    'rgb(68,34,31)',
+                    'rgb(51,24,23)',
                 ],
                 borderWidth: 1,
             },
         ],
     }
     return <div>
-        <h1>{region.region}</h1>
-        <Doughnut data={data} />
+        <h1 style={{color: "white", fontStyle: "italic"}}>{region.region}</h1>
+        <Doughnut data={data}/>
     </div>
 }
 
-const RegionPopDiagram = ({regions}) => {
-    return <div className={s.diagramsBodySmart}>
-        {regions.map(regionInfo => <Region key={regionInfo.region[1]} region={regionInfo}/>)}
-    </div>
+const RegionPopDiagram = ({regions, view}) => {
+    const [part, setPart] = useState(true)
+    switch (view) {
+        case 1:
+            return <div style={{marginTop: "10%"}}>
+                {part
+                    ? <div className={s.diagramsBody}>
+                        {regions.slice(0,3).map(regionInfo => <Region key={regionInfo.region[1]} region={regionInfo}/>)}
+                    </div>
+                    : <div className={s.diagramsBody}>
+                        {regions.slice(3).map(regionInfo => <Region key={regionInfo.region[1]} region={regionInfo}/>)}
+                    </div>}
+                <div className={s.managePart}>
+                    <button className={part && s.active}
+                        onClick={() => setPart(true)}>1</button>
+                    <button className={!part && s.active}
+                        onClick={() => setPart(false)}>2</button>
+                </div>
+            </div>
+
+        case 2:
+            return <div style={{marginTop: "2%"}}>
+                <div className={s.diagramsBody}>
+                    {regions.slice(0,3).map(regionInfo => <Region key={regionInfo.region[1]} region={regionInfo}/>)}
+                </div>
+                <div className={s.diagramsBody}>
+                    {regions.slice(3).map(regionInfo => <Region key={regionInfo.region[1]} region={regionInfo}/>)}
+                </div>
+            </div>
+
+        default:
+            return <div className={s.diagramsBodySmart}>
+                {regions.map(regionInfo => <Region key={regionInfo.region[1]} region={regionInfo}/>)}
+            </div>
+    }
 }
 
 export default RegionPopDiagram;

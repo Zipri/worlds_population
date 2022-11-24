@@ -2,4 +2,34 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin-top: 2%;
+}
+
+.diagramsBody {
+    display: flex;
+    justify-content: space-around;
+}
+
+.managePart button {
+    transition: .5s; /* Время эффекта */
+    margin: 3rem 2rem;
+    font-size: 2rem;
+    padding: 0 1rem;
+    background-color: #2c343c;
+    cursor: pointer;
+    border: .1rem solid white;
+    border-radius: 1rem 0 1rem 0;
+    color: white;
+}
+
+.managePart button:hover {
+    background-color: white;
+    border: .1rem solid #2c343c;
+    color: #2c343c;
+}
+
+.managePart .active {
+    background-color: #2c343c;
+    border: .1rem solid #a4372c;
+    color: #a4372c;
 }

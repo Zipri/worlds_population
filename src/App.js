@@ -1,11 +1,11 @@
 import './App.css';
 import RegionPopDiagramContainer from "./components/RegionPopDiagram/RegionPopDiagramContainer";
-import Header from "./components/Header/Header";
+import HeaderContainer from "./components/Header/Header";
 
 const App = () => {
 
     return <div className="App">
-        <Header/>
+        <HeaderContainer/>
         <RegionPopDiagramContainer/>
     </div>
 }

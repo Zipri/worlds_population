@@ -3,7 +3,7 @@ import RegionPopDiagram from "./RegionPopDiagram";
 import {connect} from "react-redux";
 import {getRegion} from "../../redux/regions-reducer";
 
-const RegionPopDiagramContainer = ({loading, regions, getRegion}) => {
+const RegionPopDiagramContainer = ({view, loading, regions, getRegion}) => {
     useEffect(() => {
         const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
         regions.forEach(region => getRegion(region))
@@ -11,12 +11,13 @@ const RegionPopDiagramContainer = ({loading, regions, getRegion}) => {
 
     if (loading || regions.length !== 5) return <h1>Loading...</h1>
     //TODO ^ исправить!
-    return <RegionPopDiagram regions={regions}/>
+    return <RegionPopDiagram regions={regions} view={view}/>
 };
 
 const mapStateToProps = (state) => ({
     regions: state.regions.regions,
     loading: state.regions.loading,
+    view: state.regions.view,
 })
 
 export default connect(mapStateToProps, {

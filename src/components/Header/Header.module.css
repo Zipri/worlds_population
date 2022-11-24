@@ -36,3 +36,7 @@
 .commandButton div:first-child {
     font-size: 1.5rem;
 }
+
+.activeB {
+    color: #c96c66;
+}

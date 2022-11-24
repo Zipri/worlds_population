@@ -1,10 +1,12 @@
 import {worldsPopApi} from "../api/api";
 
 const SET_REGION = 'region/SET_REGION'
+const SET_VIEW = 'region/SET_VIEW'
 const SET_LOADING = 'region/SET_LOADING'
 
 let initialState = {
     regions: [],
+    view: 1,
     loading: true
 }
 
@@ -19,6 +21,9 @@ const regionsReducer = (state = initialState, action) => {
                 }]
             }
 
+        case SET_VIEW:
+            return {...state, view: action.view}
+
         case SET_LOADING:
             return {...state, loading: action.loading}
 
@@ -30,6 +35,7 @@ export default regionsReducer
 
 const setRegion = (region, countries) => ({type: SET_REGION, region, countries})
 const setLoading = (loading) => ({type: SET_LOADING, loading})
+export const setView = (view) => ({type: SET_VIEW, view})
 
 export const getRegion = (regionName) => async (dispatch) => {
     dispatch(setLoading(true))
