@@ -1,0 +1,38 @@
+.headerBody {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+.headerBody div {
+    transition: .1s; /* Время эффекта */
+}
+
+.headerBody h1 {
+    margin: 1rem 2rem;
+    color: #7e2d27;
+    font-family: "Brush Script Std";
+}
+
+.headerBody h1 w {
+    color: #c86c66;
+}
+
+.commandPart {
+    margin: 1rem 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.commandButton {
+    margin: 0 2rem;
+    cursor: pointer;
+}
+
+.commandButton:hover {
+    color: #c96c66;
+}
+
+.commandButton div:first-child {
+    font-size: 1.5rem;
+}

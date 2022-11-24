@@ -1,4 +1,5 @@
 import React from 'react';
+import s from './RegionPopDiagram.module.css'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -43,14 +44,13 @@ const Region = ({region}) => {
         ],
     }
     return <div>
-        {console.log(region)}
         <h1>{region.region}</h1>
         <Doughnut data={data} />
     </div>
 }
 
 const RegionPopDiagram = ({regions}) => {
-    return <div>
+    return <div className={s.diagramsBodySmart}>
         {regions.map(regionInfo => <Region key={regionInfo.region[1]} region={regionInfo}/>)}
     </div>
 }
