@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import RegionPopDiagram from "./RegionPopDiagram";
 import {connect} from "react-redux";
 import {getRegion} from "../../redux/regions-reducer";
+import Preloader from "../Preloader/Preloader";
 
 const RegionPopDiagramContainer = ({view, loading, regions, getRegion}) => {
     useEffect(() => {
@@ -9,8 +10,7 @@ const RegionPopDiagramContainer = ({view, loading, regions, getRegion}) => {
         regions.forEach(region => getRegion(region))
     }, [])
 
-    if (loading || regions.length !== 5) return <h1>Loading...</h1>
-    //TODO ^ исправить!
+    if (loading) return <Preloader/>
     return <RegionPopDiagram regions={regions} view={view}/>
 };
 

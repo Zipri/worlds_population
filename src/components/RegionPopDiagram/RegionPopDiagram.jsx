@@ -54,7 +54,7 @@ const RegionPopDiagram = ({regions, view}) => {
     const [part, setPart] = useState(true)
     switch (view) {
         case 1:
-            return <div style={{marginTop: "10%"}}>
+            return <div>
                 {part
                     ? <div className={s.diagramsBody}>
                         {regions.slice(0,3).map(regionInfo => <Region key={regionInfo.region[1]} region={regionInfo}/>)}
@@ -71,7 +71,7 @@ const RegionPopDiagram = ({regions, view}) => {
             </div>
 
         case 2:
-            return <div style={{marginTop: "2%"}}>
+            return <div>
                 <div className={s.diagramsBody}>
                     {regions.slice(0,3).map(regionInfo => <Region key={regionInfo.region[1]} region={regionInfo}/>)}
                 </div>
