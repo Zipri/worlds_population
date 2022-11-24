@@ -45,7 +45,7 @@ const Region = ({region}) => {
         ],
     }
     return <div>
-        <h1 style={{color: "white", fontStyle: "italic"}}>{region.region}</h1>
+        <h1 style={{color: "#2c343c", fontStyle: "italic"}}>{region.region}</h1>
         <Doughnut data={data}/>
     </div>
 }

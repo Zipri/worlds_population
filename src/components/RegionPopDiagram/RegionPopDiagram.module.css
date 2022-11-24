@@ -15,21 +15,21 @@
     margin: 3rem 2rem;
     font-size: 2rem;
     padding: 0 1rem;
-    background-color: #2c343c;
+    background-color:  #e7e7e7;
     cursor: pointer;
-    border: .1rem solid white;
-    border-radius: 1rem 0 1rem 0;
-    color: white;
-}
-
-.managePart button:hover {
-    background-color: white;
     border: .1rem solid #2c343c;
+    border-radius: 1rem 0 1rem 0;
     color: #2c343c;
 }
 
-.managePart .active {
+.managePart button:hover {
     background-color: #2c343c;
+    border: .1rem solid  #e7e7e7;
+    color:  #e7e7e7;
+}
+
+.managePart .active {
+    background-color:  #e7e7e7;
     border: .1rem solid #a4372c;
     color: #a4372c;
 }
