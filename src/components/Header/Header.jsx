@@ -4,22 +4,24 @@ import {connect} from "react-redux";
 import {setView} from "../../redux/regions-reducer";
 
 const CommandButton = ({label, setView, view, currentView}) => {
-    const active = currentView === view
-    return <div className={s.commandButton} onClick={() => setView(view)}>
-        <div className={active && s.activeB}>&hearts;</div>
-        <text className={active && s.activeB}>{label}</text>
-    </div>
+    let classStyle = currentView === view
+        ? s.nav__button_active
+        : s.nav__button
+    return <li className={classStyle} onClick={() => setView(view)}>
+        <div>&hearts;</div>
+        <p>{label}</p>
+    </li>
 }
 
 const Header = ({view, setView}) => {
-    return <div className={s.headerBody}>
-        <h1>World's <w>Population </w>🌎</h1>
-        <div className={s.commandPart}>
+    return <header className={s.header}>
+        <img src="./assets/logo.svg" alt="Logo" className={s.logo}/>
+        <ul className={s.nav}>
             <CommandButton label={"1×3"} view={1} setView={setView} currentView={view}/>
             <CommandButton label={"2×3"} view={2} setView={setView} currentView={view}/>
             <CommandButton label={"smart"} view={0} setView={setView} currentView={view}/>
-        </div>
-    </div>
+        </ul>
+    </header>
 };
 
 const HeaderContainer = ({view, setView}) => {

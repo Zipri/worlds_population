@@ -4,10 +4,10 @@ import HeaderContainer from "./components/Header/Header";
 
 const App = () => {
 
-    return <div className="App">
+    return <main className="App">
         <HeaderContainer/>
         <RegionPopDiagramContainer/>
-    </div>
+    </main>
 }
 
 export default App;
